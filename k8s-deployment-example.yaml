@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-connection-tester
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-connection-tester
+  template:
+    metadata:
+      labels:
+        app: db-connection-tester
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - name: db-connection-tester
+        image: registry.gitlab.com/bobymcbobs/database-connection-tester-container:latest
+        securityContext:
+          readOnlyRootFilesystem: true
+        imagePullPolicy: Always
+        env:
+          - name: MYSQL_HOST
+            value: ""
+          - name: MYSQL_USER
+            value: ""
+          - name: MYSQL_PASSWORD
+            value: ""

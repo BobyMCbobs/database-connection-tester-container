@@ -1,0 +1,24 @@
+{
+  "name": "db-connection-tester-container",
+  "version": "0.0.1",
+  "description": "Test your database connection, inside a cluster",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/BobyMCbobs/database-connection-tester-container.git"
+  },
+  "author": "Caleb Woodbine <calebwoodbine.public@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://gitlab.com/BobyMCbobs/database-connection-tester-container/issues"
+  },
+  "homepage": "https://gitlab.com/BobyMCbobs/database-connection-tester-container#readme",
+  "dependencies": {
+    "knex": "^0.20.2",
+    "mysql": "^2.17.1",
+    "pq": "0.0.3"
+  }
+}
