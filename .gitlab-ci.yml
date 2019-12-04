@@ -8,5 +8,5 @@ build:
     entrypoint: [""]
   script:
     - if [ ! -z "$CI_COMMIT_TAG" ]; then KANIKO_EXTRA_DESTINATION="--destination $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"; KANIKO_EXTRA_DOCKERHUB_DESTINATION="--destination docker.io/bobymcbobs/db-connection-tester:$CI_COMMIT_TAG"; fi
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"},\"docker.io\":{\"username\":\"bobymcbobs\",\"password\":\"$DOCKER_ACCESS_TOKEN\"}}}" > /kaniko/.docker/config.json
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"},\"docker.io\":{\"auth\":\"$DOCKER_ACCESS_TOKEN\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:latest --destination docker.io/bobymcbobs/db-connection-tester:latest $KANIKO_EXTRA_DESTINATION $KANIKO_EXTRA_DOCKERHUB_DESTINATION
